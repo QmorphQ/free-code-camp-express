@@ -36,8 +36,8 @@ app.get("/:word/echo", (req, res) => {
 
 app.use("/name", bodyParser.urlencoded({extended: false}));
 
-app.route("/name").get((req, res) => {
-    res.json({name: req.query.first + " " + req.query.last}); 
+app.route("/name").post((req, res) => {
+    res.json({name: req.body.first + " " + req.body.last}); 
 })
 
 module.exports = app;
