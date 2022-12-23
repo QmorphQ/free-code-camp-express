@@ -3,6 +3,7 @@ let express = require("express");
 let app = express();
 
 app.use("/", (req, res, next) => {
+    console.log(req.params)
   console.log(req.method + " " + req.path + " - " + req.ip + " " + req.time);
   next();
 });
@@ -28,5 +29,7 @@ app.get("/json", (req, res) => {
     ? res.json({ message: "HELLO JSON" })
     : res.json({ message: "Hello json" });
 });
-
+app.get("/:word/echo", (req, res) => {
+    res.json({echo: req.params.word});
+})
 module.exports = app;
